@@ -7,7 +7,7 @@ mocking an API server with random delays in the response
 git clone https://github.com/kemalelmizan/mocklocal
 cd mocklocal
 npm install
-node mocklocal.js
+npm start
 ```
 
 ## Configurations
