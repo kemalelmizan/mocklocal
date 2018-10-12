@@ -1,6 +1,6 @@
 # mocklocal.js
 
-mocking an API server with random delays in their response
+mocking an API server with random delays in the response
 
 ## Installation
 ```
