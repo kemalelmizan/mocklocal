@@ -1,8 +1,8 @@
 {
   "name": "mocklocal",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "mocking an API server with random delays in the response",
-  "main": "mocklocal.js",
+  "main": "bin/mocklocal.js",
   "scripts": {
     "test": "mocha",
     "test:coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
@@ -13,6 +13,12 @@
     "type": "git",
     "url": "git://github.com/kemalelmizan/mocklocal.git"
   },
+  "keywords": [
+    "mock",
+    "server",
+    "mocking",
+    "api"
+  ],
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4"
@@ -25,7 +31,7 @@
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^13.0.1"
   },
-  "bin":{
+  "bin": {
     "mocklocal": "./bin/mocklocal.js"
   }
 }

@@ -1,11 +1,15 @@
 # mocklocal.js
-[![Build Status](https://travis-ci.org/kemalelmizan/mocklocal.svg?branch=master)](https://travis-ci.org/kemalelmizan/mocklocal) [![Coverage Status](https://coveralls.io/repos/github/kemalelmizan/mocklocal/badge.svg?branch=master)](https://coveralls.io/github/kemalelmizan/mocklocal?branch=master)
+[![Build Status](https://travis-ci.org/kemalelmizan/mocklocal.svg?branch=master)](https://travis-ci.org/kemalelmizan/mocklocal) [![Coverage Status](https://coveralls.io/repos/github/kemalelmizan/mocklocal/badge.svg?branch=master)](https://coveralls.io/github/kemalelmizan/mocklocal?branch=master) [![Known Vulnerabilities](https://snyk.io/test/github/kemalelmizan/mocklocal/badge.svg?targetFile=package.json)](https://snyk.io/test/github/kemalelmizan/mocklocal?targetFile=package.json)
 
 mocking an API server with random delays in the response
 
 ## Installation
 ```
 npm i -g mocklocal
+```
+
+## Usage
+```
 mocklocal
 ```
 
@@ -17,7 +21,7 @@ All these options can be configured through environment variables
 
 Example usage with config:
 ```
-PORT=5004 MIN_DELAY=0 MAX_DELAY=0 npm start
+PORT=5004 MIN_DELAY=0 MAX_DELAY=0 mocklocal
 ```
 
 ## Tests
