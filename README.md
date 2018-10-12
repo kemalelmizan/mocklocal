@@ -5,10 +5,8 @@ mocking an API server with random delays in the response
 
 ## Installation
 ```
-git clone https://github.com/kemalelmizan/mocklocal
-cd mocklocal
-npm install
-npm start
+npm i -g mocklocal
+mocklocal
 ```
 
 ## Configurations

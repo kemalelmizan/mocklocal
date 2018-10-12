@@ -1,7 +1,5 @@
-
-process.env.PORT =  process.env.PORT || 3000;
-process.env.MIN_DELAY = process.env.MIN_DELAY || 0;
-process.env.MAX_DELAY = process.env.MAX_DELAY || 10;
+#!/usr/bin/env node
+'use strict';
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -9,6 +7,13 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Prevent caching of this module so module.parent is always accurate
+delete require.cache[__filename];
+
+process.env.PORT =  process.env.PORT || 3000;
+process.env.MIN_DELAY = process.env.MIN_DELAY || 0;
+process.env.MAX_DELAY = process.env.MAX_DELAY || 10;
 
 app.all("/:route", async (req, res) => {
   // Delay in seconds
