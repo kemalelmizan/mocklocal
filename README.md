@@ -1,4 +1,5 @@
 # mocklocal.js
+[![Build Status](https://travis-ci.org/kemalelmizan/mocklocal.svg?branch=master)](https://travis-ci.org/kemalelmizan/mocklocal) [![Coverage Status](https://coveralls.io/repos/github/kemalelmizan/mocklocal/badge.svg?branch=master)](https://coveralls.io/github/kemalelmizan/mocklocal?branch=master)
 
 mocking an API server with random delays in the response
 
@@ -22,7 +23,7 @@ PORT=5004 MIN_DELAY=0 MAX_DELAY=0 npm start
 ```
 
 ## Tests
-Used nyc, mocha, chai for tests and coveralls for test coverage
+Used nyc, mocha, chai for tests; and coveralls for test coverage
 ```
 npm test
 ```

@@ -10,6 +10,10 @@
   },
   "author": "Kemal Elmizan",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kemalelmizan/mocklocal.git"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4"
