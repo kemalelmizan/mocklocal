@@ -22,7 +22,7 @@ PORT=5004 MIN_DELAY=0 MAX_DELAY=0 npm start
 ```
 
 ## Tests
-Used chai, mocha, and nyc for tests
+Used nyc, mocha, chai for tests and coveralls for test coverage
 ```
 npm test
 ```
