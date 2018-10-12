@@ -1,0 +1,22 @@
+{
+  "name": "mocklocal",
+  "version": "1.0.0",
+  "description": "mock local api server",
+  "main": "mocklocal.js",
+  "scripts": {
+    "start": "node mocklocal.js",
+    "test": "nyc --reporter=text mocha"
+  },
+  "author": "Kemal Elmizan",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "chai-http": "*",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1"
+  }
+}
