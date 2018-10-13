@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 process.env.PORT = process.env.PORT || 3000;
 process.env.MIN_DELAY = process.env.MIN_DELAY || 0;
-process.env.MAX_DELAY = process.env.MAX_DELAY || 10;
+process.env.MAX_DELAY = process.env.MAX_DELAY || 3;
 process.env.RESPONSE = process.env.RESPONSE || "req";
 
 const isValidJSON = JSONstr => {
@@ -27,9 +27,10 @@ app.all("*", (req, res) => {
     process.env.RESPONSE = JSON.stringify(req.body);
 
   // Delay in seconds
-  const delay =
-    Math.floor(Math.random() * parseInt(process.env.MAX_DELAY)) +
-    parseInt(process.env.MIN_DELAY);
+  const delay = parseFloat(
+    Math.random() * (process.env.MAX_DELAY - process.env.MIN_DELAY) +
+      process.env.MIN_DELAY
+  ).toFixed(3);
 
   console.log(
     `Incoming req, delayed for ${delay}s: ${req.method} - ${req.url} from ${

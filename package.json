@@ -1,11 +1,12 @@
 {
   "name": "mocklocal",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "mocking an API server with random delays in the response",
   "main": "bin/mocklocal.js",
   "scripts": {
     "test": "mocha",
-    "test:coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "test:coverage": "nyc report",
+    "test:coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Kemal Elmizan",
   "license": "MIT",

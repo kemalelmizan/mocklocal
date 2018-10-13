@@ -24,13 +24,13 @@ All these options can be configured through environment variables
 | Property | Description | Default value |
 |-|-|-|
 | `PORT` | Port to serve the mock server | 3000 |
-| `MIN_DELAY` | Minimum delay for the mock server in seconds | 0 |
-| `MAX_DELAY` | Maximum delay for the mock server in seconds | 10 |
+| `MIN_DELAY` | Minimum delay for the mock server in seconds <br> you can also use floating point, with 3 fixed precision | 0 |
+| `MAX_DELAY` | Maximum delay for the mock server in seconds <br> you can also use floating point, with 3 fixed precision | 3 |
 | `RESPONSE` | Default response body for **all** requests <br> use `req` to reply back with the request <br> dont forget to escape your string if you're responding with JSON | `req` |
 
 Example usage with config:
 ```
-PORT=5000 MIN_DELAY=0 MAX_DELAY=5 RESPONSE={\"status\":\"ok\"} mocklocal
+PORT=5000 MIN_DELAY=0 MAX_DELAY=.5 RESPONSE={\"status\":\"ok\"} mocklocal
 ```
 
 ## Tests
@@ -41,5 +41,5 @@ npm test
 
 ## Todos
 
-1.  [ ] Enable floating points in delay (so we can have .1 seconds)
+1.  [x] Enable floating point in delay (so we can have .1 seconds)
 1.  [ ] `response.json` file as response
