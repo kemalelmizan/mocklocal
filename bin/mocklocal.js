@@ -17,7 +17,6 @@ const isValidJSON = JSONstr => {
   try {
     JSON.parse(JSONstr);
   } catch (e) {
-    console.error(e);
     return false;
   }
   return true;

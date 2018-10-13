@@ -1,6 +1,6 @@
 {
   "name": "mocklocal",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "mocking an API server with random delays in the response",
   "main": "bin/mocklocal.js",
   "scripts": {
