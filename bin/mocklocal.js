@@ -28,8 +28,9 @@ app.all("*", (req, res) => {
 
   // Delay in seconds
   const delay = parseFloat(
-    Math.random() * (process.env.MAX_DELAY - process.env.MIN_DELAY) +
-      process.env.MIN_DELAY
+    Math.random() *
+      (parseFloat(process.env.MAX_DELAY) - parseFloat(process.env.MIN_DELAY)) +
+      parseFloat(process.env.MIN_DELAY)
   ).toFixed(3);
 
   console.log(
