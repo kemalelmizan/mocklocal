@@ -4,7 +4,7 @@
   "description": "mocking an API server with random delays in the response",
   "main": "bin/mocklocal.js",
   "scripts": {
-    "test": "mocha",
+    "test": "nyc mocha",
     "test:coverage": "nyc report",
     "test:coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
