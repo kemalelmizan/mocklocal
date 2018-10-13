@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-'use strict';
+"use strict";
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -8,31 +8,48 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Prevent caching of this module so module.parent is always accurate
-delete require.cache[__filename];
-
-process.env.PORT =  process.env.PORT || 3000;
+process.env.PORT = process.env.PORT || 3000;
 process.env.MIN_DELAY = process.env.MIN_DELAY || 0;
 process.env.MAX_DELAY = process.env.MAX_DELAY || 10;
+process.env.RESPONSE = process.env.RESPONSE || "req";
 
-app.all("/:route", async (req, res) => {
+const isValidJSON = JSONstr => {
+  try {
+    JSON.parse(JSONstr);
+  } catch (e) {
+    console.error(e);
+    return false;
+  }
+  return true;
+};
+
+app.all("*", (req, res) => {
+  if (process.env.RESPONSE === "req")
+    process.env.RESPONSE = JSON.stringify(req.body);
+
   // Delay in seconds
   const delay =
     Math.floor(Math.random() * parseInt(process.env.MAX_DELAY)) +
     parseInt(process.env.MIN_DELAY);
+
   console.log(
-    `Incoming request: ${req.method} - /${req.params.route} from ${
+    `Incoming req, delayed for ${delay}s: ${req.method} - ${req.url} from ${
       req.ip
-    } - ${JSON.stringify(req.body)} - will be delayed for ${delay}s`
+    } - ${JSON.stringify(req.body)}`
   );
 
-  await setTimeout(async () => {
-    await console.log(
-      `${req.method} - /${req.params.route} from ${req.ip} - ${JSON.stringify(
+  setTimeout(() => {
+    console.log(
+      `Responding ${req.method} - ${req.url} from ${req.ip} - ${JSON.stringify(
         req.body
-      )} responded.`
+      )}`
     );
-    await res.send("OK");
+
+    // If process.env.RESPONSE is valid json, add json header in response
+    if (isValidJSON(process.env.RESPONSE))
+      res.header("Content-Type", "application/json");
+
+    res.send(process.env.RESPONSE);
   }, delay * 1000);
 });
 
@@ -43,5 +60,6 @@ env:
   PORT=${process.env.PORT}
   MIN_DELAY=${process.env.MIN_DELAY}
   MAX_DELAY=${process.env.MAX_DELAY}
+  RESPONSE=${process.env.RESPONSE}
 `);
 });
