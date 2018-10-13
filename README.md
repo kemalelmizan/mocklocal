@@ -26,7 +26,7 @@ All these options can be configured through environment variables
 | `PORT` | Port to serve the mock server | 3000 |
 | `MIN_DELAY` | Minimum delay for the mock server in seconds | 0 |
 | `MAX_DELAY` | Maximum delay for the mock server in seconds | 10 |
-| `RESPONSE` | Default response body for all requests <br> use `req` to reply back with the request <br> dont forget to escape your string if you're responding with JSON | `req` |
+| `RESPONSE` | Default response body for **all** requests <br> use `req` to reply back with the request <br> dont forget to escape your string if you're responding with JSON | `req` |
 
 Example usage with config:
 ```
@@ -38,3 +38,8 @@ Used nyc, mocha, chai for tests; and coveralls for test coverage
 ```
 npm test
 ```
+
+## Todos
+
+1.  [ ] Enable floating points in delay (so we can have .1 seconds)
+1.  [ ] `response.json` file as response
