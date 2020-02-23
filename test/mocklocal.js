@@ -2,11 +2,14 @@ const mocklocal = require("../bin/mocklocal");
 
 const chai = require("chai");
 const chaiHttp = require("chai-http");
+
 const assert = chai.assert;
 
 chai.use(chaiHttp);
+
 describe("mocklocal", () => {
   describe("/GET mocklocal", () => {
+
     it("should return http 200", done => {
       process.env.PORT = "3000";
       process.env.MIN_DELAY = "0";
@@ -22,12 +25,13 @@ describe("mocklocal", () => {
           done();
         });
     });
+
     it("should not have application/json header in response", done => {
       process.env.PORT = "3000";
       process.env.MIN_DELAY = "0";
       process.env.MAX_DELAY = "0";
       // Invalid json example
-      process.env.RESPONSE = "{";
+      process.env.RESPONSE = "invalid json";
       chai
         .request(mocklocal)
         .get("/test")
@@ -39,6 +43,7 @@ describe("mocklocal", () => {
           done();
         });
     });
+
     it("should respond with request", done => {
       process.env.PORT = "3000";
       process.env.MIN_DELAY = "0";
@@ -57,5 +62,29 @@ describe("mocklocal", () => {
           done();
         });
     });
+
+    it("should respond with stdin if available", done => {
+      stdin = require('mock-stdin').stdin();
+      process.nextTick(() => {
+        stdin.send(`{"source":"testing"}\r`);
+        stdin.end()
+      });
+      process.env.PORT = "3000";
+      process.env.MIN_DELAY = "0";
+      process.env.MAX_DELAY = "0";
+      chai
+        .request(mocklocal)
+        .post("/test")
+        .set("content-type", "application/json")
+        .send({})
+        .end((err, res) => {
+          assert.equal(err, undefined);
+          assert.equal(res.status, 200);
+          assert.equal("application/json; charset=utf-8", res.header['content-type'])
+          assert.equal(res.body, `{"source":"testing"}`);
+          done();
+        });
+    });
+
   });
 });
