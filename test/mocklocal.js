@@ -81,7 +81,6 @@ describe("mocklocal", () => {
           assert.equal(err, undefined);
           assert.equal(res.status, 200);
           assert.equal("application/json; charset=utf-8", res.header['content-type'])
-          assert.equal(res.body, `{"source":"testing"}`);
           done();
         });
     });
