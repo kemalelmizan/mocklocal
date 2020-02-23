@@ -1,6 +1,6 @@
 {
   "name": "mocklocal",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "description": "mocking an API server with random delays in the response",
   "main": "bin/mocklocal.js",
   "scripts": {
@@ -27,11 +27,11 @@
   },
   "devDependencies": {
     "chai": "*",
-    "chai-http": "*",
-    "coveralls": "^3.0.2",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.0.9",
     "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0",
-    "nyc": "^13.0.1"
+    "nyc": "^15.0.0"
   },
   "bin": {
     "mocklocal": "./bin/mocklocal.js"

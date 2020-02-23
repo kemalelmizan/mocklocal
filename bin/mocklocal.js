@@ -13,6 +13,21 @@ process.env.MIN_DELAY = process.env.MIN_DELAY || 0;
 process.env.MAX_DELAY = process.env.MAX_DELAY || 3;
 process.env.RESPONSE = process.env.RESPONSE || "req";
 
+let stdin = '';
+
+process.stdin.setEncoding('utf8');
+
+process.stdin.on('readable', function () {
+  let chunk = process.stdin.read();
+  if (chunk !== null) {
+    stdin += chunk;
+  }
+});
+
+process.stdin.on('end', function () {
+  if (stdin !== '') process.env.RESPONSE = stdin;
+});
+
 const isValidJSON = JSONstr => {
   try {
     JSON.parse(JSONstr);
@@ -29,13 +44,13 @@ app.all("*", (req, res) => {
   // Delay in seconds
   const delay = parseFloat(
     Math.random() *
-      (parseFloat(process.env.MAX_DELAY) - parseFloat(process.env.MIN_DELAY)) +
-      parseFloat(process.env.MIN_DELAY)
+    (parseFloat(process.env.MAX_DELAY) - parseFloat(process.env.MIN_DELAY)) +
+    parseFloat(process.env.MIN_DELAY)
   ).toFixed(3);
 
   console.log(
     `Incoming req, delayed for ${delay}s: ${req.method} - ${req.url} from ${
-      req.ip
+    req.ip
     } - ${JSON.stringify(req.body)}`
   );
 

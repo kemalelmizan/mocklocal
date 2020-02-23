@@ -8,7 +8,7 @@ mocking an API server with random delays in the response
 npm i -g mocklocal
 ```
 
-## Usage
+## Basic Usage
 To start your mock server:
 ```
 mocklocal
@@ -33,6 +33,16 @@ Example usage with config:
 PORT=5000 MIN_DELAY=0 MAX_DELAY=.5 RESPONSE={\"status\":\"ok\"} mocklocal
 ```
 
+## Usage with `stdin`
+Examples of usage with stdin piped to mocklocal
+```
+echo '{"source":"stdin"}' | mocklocal
+```
+```
+cat ./response_example.json | mocklocal
+```
+Note: using stdin as response will override value set in `RESPONSE` env variable
+
 ## Tests
 Used nyc, mocha, chai for tests; and coveralls for test coverage
 ```
@@ -42,4 +52,4 @@ npm test
 ## Todos
 
 1.  [x] Enable floating point in delay (so we can have .1 seconds)
-1.  [ ] `response.json` file as response
+1.  [x] `response.json` file as response
