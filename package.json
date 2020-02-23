@@ -5,7 +5,7 @@
   "main": "bin/mocklocal.js",
   "scripts": {
     "start": "./bin/mocklocal.js",
-    "test": "nyc mocha",
+    "test": "nyc mocha --exit",
     "test:coverage": "nyc report",
     "test:coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
